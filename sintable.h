@@ -1,3 +1,10 @@
+/*
+ * This file is part of Spout
+ *
+ * See COPYING file for copyright, license and warranty details.
+ *
+ */
+
 short sintable[1024]={
 	0,		25,		50,		75,		101,	126,	151,	176,
 	201,	226,	251,	276,	301,	326,	351,	376,
@@ -128,4 +135,3 @@ short sintable[1024]={
 	-400,	-375,	-350,	-325,	-300,	-275,	-250,	-225,
 	-200,	-175,	-150,	-125,	-100,	-74,	-49,	-24
 };
-

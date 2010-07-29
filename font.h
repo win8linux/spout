@@ -1,3 +1,10 @@
+/*
+ * This file is part of Spout
+ *
+ * See COPYING file for copyright, license and warranty details.
+ *
+ */
+
 const unsigned char	FONT6[] = {
 //	 80,  77,  66,  80,  20,   6,   0,   0,   1,   0, 128,   0,  96,   0, 223, 119,
 //	  0,   6,   0,   0,
@@ -201,4 +208,3 @@ const unsigned char	FONT16[] = {
 	 24,  60,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
 	 24,   0,   0,   0
 };
-

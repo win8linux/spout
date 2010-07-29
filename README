@@ -1,0 +1,29 @@
+Spout
+=====
+
+Spout is a simple caveflying game. The object is to get as high as possible, avoiding or destroying obstacles.
+
+Requirements
+------------
+
+* libSDL
+
+Install
+-------
+
+Edit config.mk to your liking, then run 'make install'
+
+Controls
+--------
+
+Left:  Rotate left
+Right: Rotate right
+Space: Accelerate
+Exit:  Shift-Esc
+
+History
+-------
+
+Spout was originally made for a handheld by kuni, and soon afterwards was ported to Windows using cygwin and sdl, licensed under the MIT license; see http://www.din.or.jp/~ku_/junk/junk.htm#spout
+In 2004 a 'unix version' was released, which mostly just slapped autotools into the windows version and infringed the license: http://code.mizzenblog.com/category/spout/
+This is a new unix version, based on the original Windows code by kuni, which aims to add useful features and simplify the code.
