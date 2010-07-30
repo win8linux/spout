@@ -1,9 +1,4 @@
-/*
- * This file is part of Spout
- *
- * See COPYING file for copyright, license and warranty details.
- *
- */
+/* See COPYING file for copyright, license and warranty details */
 
 #define SDL_WIDTH (128 * zoom)
 #define SDL_HEIGHT (88 * zoom)

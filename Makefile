@@ -7,11 +7,14 @@ TARGETS = $(NAME)
 OBJ = $(SRC:.c=.o)
 MAN = $(TARGETS:=.1)
 
+HEADERS = spout.h font.h sintable.h
+WEB = web/index.html
+
 include config.mk
 
 all: $(TARGETS)
 
-$(OBJ): config.mk spout.h
+$(OBJ): config.mk $(HEADERS)
 
 .c.o:
 	@echo CC $<
@@ -21,12 +24,16 @@ $(TARGETS): $(OBJ)
 	@echo LD $@
 	@cc -o $@ $(OBJ) $(LDFLAGS)
 
+$(WEB): web/doap.ttl
+	@echo making webpage
+	@sh web/makepage.sh "Spout - A simple caveflying game" web/doap.ttl > $(WEB)
+
 clean:
-	rm -f -- $(TARGETS) $(OBJ) $(NAME)-$(VERSION).tar.gz $(NAME)-$(VERSION).tar.gz.sig
+	rm -f -- $(TARGETS) $(WEB) $(OBJ) $(NAME)-$(VERSION).tar.gz $(NAME)-$(VERSION).tar.gz.sig
 
 dist: clean
 	@mkdir -p $(NAME)-$(VERSION)
-	@cp -R $(SRC) $(NAME).h Makefile config.mk COPYING README $(NAME)-$(VERSION)
+	@cp -R $(SRC) $(HEADERS) Makefile config.mk COPYING README $(NAME)-$(VERSION)
 	@for i in $(MAN); do \
 		sed "s/VERSION/$(VERSION)/g" < $$i > $(NAME)-$(VERSION)/$$i; done
 	@tar -c $(NAME)-$(VERSION) | gzip -c > $(NAME)-$(VERSION).tar.gz
@@ -51,8 +58,5 @@ uninstall:
 	@for i in $(TARGETS); do rm -f $(DESTDIR)$(PREFIX)/bin/$$i; done
 	@echo uninstalling manual pages from $(DESTDIR)$(MANPREFIX)/man1
 	@for i in $(MAN); do rm -f $(DESTDIR)$(MANPREFIX)/man1/$$i; done
-
-test: all
-	@echo no tests yet!
 
 .PHONY: all clean dist install uninstall test
