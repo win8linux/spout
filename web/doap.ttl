@@ -1,0 +1,26 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix doap: <http://usefulinc.com/ns/doap#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix :     <http://njw.me.uk/software/spout#>.
+
+:p a doap:Project;
+    doap:name "Spout";
+    doap:shortdesc "A simple caveflying game";
+    doap:description "Spout is a simple caveflying game. The aim is to get as high as possible avoiding or destroying obstacles.";
+    doap:homepage <http://njw.me.uk/software/spout>;
+    doap:repository :repo;
+    doap:programming-language "C";
+    doap:license <http://creativecommons.org/licenses/MIT/>;
+    doap:release :v1.4;
+    doap:maintainer <http://njw.me.uk/card#i>.
+
+<http://njw.me.uk/card#i> a foaf:Person;
+	foaf:name "Nick White";
+	foaf:homepage <http://njw.me.uk>.
+
+:repo a doap:GitRepository;
+    doap:location <http://git.njw.me.uk/spout.git>.
+
+:v1.4 a doap:Version;
+    doap:revision "1.4";
+    doap:file-release <http://njw.me.uk/software/spout/spout-1.4.tar.gz>.
