@@ -12,7 +12,6 @@
 #include "spout.h"
 #include "sintable.h"
 #include "font.h"
-#include "config.h"
 
 #define FRAMERATE 50
 #define MAX_GRAIN 500
@@ -93,6 +92,8 @@ void pceFontSetPos(int x, int y);
 void pceFontSetType(int type);
 void pceLCDTrans();
 int pcePadGet();
+
+#include "config.h"
 
 void pceAppInit(void)
 {
