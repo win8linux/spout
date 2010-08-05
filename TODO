@@ -1,6 +1,6 @@
 remove functions which are more trouble than they're worth
 check function return values more
-set controls and default zoom and fullscreen in config.h
+set controls in config.h
 move useful stuff from spout.h to spout.c
 rewrite control handling
 change pause to P or PauseBreak

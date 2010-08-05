@@ -12,6 +12,7 @@
 #include "spout.h"
 #include "sintable.h"
 #include "font.h"
+#include "config.h"
 
 #define FRAMERATE 50
 #define MAX_GRAIN 500
@@ -67,8 +68,6 @@ int nGrain;
 int time = FRAMERATE * 60, score = 0, height = 0, dispscore = 0;
 int hiScore[2] = {0, 0};
 int dispPos, upperLine, rollCount;
-int fullscreen = 0;
-int zoom = 4;
 char score_path[512];
 
 SDL_Surface *video, *layer;

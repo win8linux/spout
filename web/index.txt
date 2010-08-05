@@ -1,0 +1,37 @@
+Spout
+=======================================================================
+
+About
+-----
+
+Spout is a simple caveflying game. The aim is to get as high as
+possible avoiding or destroying obstacles.
+
+![Screenshot of Spout](screen.png)
+
+It should work on any *nix system with SDL libraries installed.
+
+Spout is free software released under the terms of the MIT license.
+
+### [Download Spout 1.4](releases/spout-1.4.tar.gz)  
+### ([GPG signature](releases/spout-1.4.tar.gz.sig))
+
+History
+-------
+
+Spout was originally written for a handheld by kuni, and soon
+afterwards was ported to Windows using cygwin and sdl and released
+under the MIT license.
+
+In 2004 a 'unix version' was released, which mostly just slapped
+autotools into the windows version and infringed the license.
+
+This is a new unix version, based on the original Windows code by
+kuni, which aims to add useful features and simplify the code.
+
+Development
+-----------
+
+Please send any patches, bugs or general thoughts to me by
+[email](http://njw.me.uk/contact). A list of current issues to
+work on can be found in the TODO file in the repository.

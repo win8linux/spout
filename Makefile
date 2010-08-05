@@ -7,14 +7,14 @@ TARGETS = $(NAME)
 OBJ = $(SRC:.c=.o)
 MAN = $(TARGETS:=.1)
 
-HEADERS = spout.h font.h sintable.h
+HEADERS = spout.h config.def.h font.h sintable.h
 WEB = web/index.html
 
 include config.mk
 
 all: $(TARGETS)
 
-$(OBJ): config.mk $(HEADERS)
+$(OBJ): config.mk config.h $(HEADERS)
 
 .c.o:
 	@echo CC $<
@@ -24,9 +24,17 @@ $(TARGETS): $(OBJ)
 	@echo LD $@
 	@cc -o $@ $(OBJ) $(LDFLAGS)
 
-$(WEB): web/doap.ttl
+config.h:
+	@echo creating $@ from config.def.h
+	@cp config.def.h $@
+
+$(WEB): web/index.txt web/header.html web/footer.html web/doap.ttl
 	@echo making webpage
-	@sh web/makepage.sh "Spout - A simple caveflying game" web/doap.ttl > $(WEB)
+	@cat web/header.html > $@
+	@smu < web/index.txt >> $@
+	@echo '<hr />' >> $@
+	@sh web/summary.sh web/doap.ttl | smu >> $@
+	@cat web/footer.html >> $@
 
 clean:
 	rm -f -- $(TARGETS) $(WEB) $(OBJ) $(NAME)-$(VERSION).tar.gz $(NAME)-$(VERSION).tar.gz.sig
@@ -36,8 +44,8 @@ dist: clean
 	@cp -R $(SRC) $(HEADERS) Makefile config.mk COPYING README $(NAME)-$(VERSION)
 	@for i in $(MAN); do \
 		sed "s/VERSION/$(VERSION)/g" < $$i > $(NAME)-$(VERSION)/$$i; done
-	@tar -c $(NAME)-$(VERSION) | gzip -c > $(NAME)-$(VERSION).tar.gz
-	@gpg -b < $(NAME)-$(VERSION).tar.gz > $(NAME)-$(VERSION).tar.gz.sig
+	@tar -c $(NAME)-$(VERSION) | gzip -c > web/releases/$(NAME)-$(VERSION).tar.gz
+	@gpg -b < web/releases/$(NAME)-$(VERSION).tar.gz > web/releases/$(NAME)-$(VERSION).tar.gz.sig
 	@rm -rf $(NAME)-$(VERSION)
 	@echo $(NAME)-$(VERSION).tar.gz $(NAME)-$(VERSION).tar.gz.sig
 
