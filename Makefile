@@ -31,7 +31,7 @@ config.h:
 $(WEB): web/index.txt web/header.html web/footer.html web/doap.ttl
 	@echo making webpage
 	@cat web/header.html > $@
-	@smu < web/index.txt >> $@
+	@sed 's/VERSION/$(VERSION)/g' < web/index.txt | smu >> $@
 	@echo '<hr />' >> $@
 	@sh web/summary.sh web/doap.ttl | smu >> $@
 	@cat web/footer.html >> $@

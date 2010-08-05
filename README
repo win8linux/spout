@@ -17,11 +17,11 @@ Edit config.mk to your liking, then run 'make install'
 Controls
 --------
 
-Left:  Rotate left  
-Right: Rotate right  
-Space: Accelerate  
-Pause: Esc  
-Exit:  Shift-Esc
+Left:      Rotate left
+Right:     Rotate right
+Space:     Accelerate
+Esc:       Pause
+Shift-Esc: Quit
 
 History
 -------

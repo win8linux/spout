@@ -13,8 +13,8 @@ It should work on any *nix system with SDL libraries installed.
 
 Spout is free software released under the terms of the MIT license.
 
-### [Download Spout 1.4](releases/spout-1.4.tar.gz)  
-### ([GPG signature](releases/spout-1.4.tar.gz.sig))
+### [Download Spout 1.4](releases/spout-VERSION.tar.gz)  
+### ([GPG signature](releases/spout-VERSION.tar.gz.sig))
 
 History
 -------
