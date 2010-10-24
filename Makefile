@@ -48,8 +48,8 @@ dist: clean
 	@cp -R $(SRC) $(HEADERS) Makefile config.mk COPYING README $(NAME)-$(VERSION)
 	@for i in $(MAN); do \
 		sed "s/VERSION/$(VERSION)/g" < $$i > $(NAME)-$(VERSION)/$$i; done
-	@tar -c $(NAME)-$(VERSION) | bzip2 -c > web/releases/$(NAME)-$(VERSION).tar.bz2
-	@gpg -b < web/releases/$(NAME)-$(VERSION).tar.bz2 > web/releases/$(NAME)-$(VERSION).tar.bz2.sig
+	@tar -c $(NAME)-$(VERSION) | bzip2 -c > $(NAME)-$(VERSION).tar.bz2
+	@gpg -b < $(NAME)-$(VERSION).tar.bz2 > $(NAME)-$(VERSION).tar.bz2.sig
 	@rm -rf $(NAME)-$(VERSION)
 	@echo $(NAME)-$(VERSION).tar.bz2 $(NAME)-$(VERSION).tar.bz2.sig
 
