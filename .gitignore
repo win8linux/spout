@@ -1,4 +1,3 @@
 *.o
 spout
-web/index.html
-web/releases
+index.html

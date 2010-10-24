@@ -8,7 +8,7 @@ OBJ = $(SRC:.c=.o)
 MAN = $(TARGETS:=.1)
 
 HEADERS = spout.h config.def.h font.h sintable.h
-WEB = web/index.html
+WEB = index.html
 
 include config.mk
 
@@ -28,13 +28,17 @@ config.h:
 	@echo creating $@ from config.def.h
 	@cp config.def.h $@
 
-$(WEB): web/index.txt web/header.html web/footer.html web/doap.ttl
+$(WEB): README webheader.html doap.ttl
 	@echo making webpage
-	@cat web/header.html > $@
-	@sed 's/VERSION/$(VERSION)/g' < web/index.txt | smu >> $@
+	@cat webheader.html > $@
+	@sed 5q < README | smu >> $@
+	@echo '![Screenshot of Spout](screenshot.png)' | smu >> $@
+	@echo '<h3><a href="$(NAME)-$(VERSION).tar.bz2">Download Spout $(VERSION)</a><br />' >> $@
+	@echo '<a href="$(NAME)-$(VERSION).tar.bz2.sig">GPG signature</a></h3>' >> $@
+	@sed '1,6d' < README | smu >> $@
 	@echo '<hr />' >> $@
-	@sh web/summary.sh web/doap.ttl | smu >> $@
-	@cat web/footer.html >> $@
+	@sh summary.sh doap.ttl | smu >> $@
+	@echo '</body></html>' >> $@
 
 clean:
 	rm -f -- $(TARGETS) $(WEB) $(OBJ) $(NAME)-$(VERSION).tar.bz2 $(NAME)-$(VERSION).tar.bz2.sig

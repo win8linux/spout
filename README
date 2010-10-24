@@ -4,16 +4,6 @@ Spout
 Spout is a simple caveflying game. The aim is to get as high as
 possible, avoiding or destroying obstacles.
 
-Requirements
-------------
-
-* libSDL
-
-Install
--------
-
-Edit config.mk to your liking, then run 'make install'
-
 Controls
 --------
 

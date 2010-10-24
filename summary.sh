@@ -6,7 +6,7 @@ rdf="$1"
 
 q="PREFIX doap: <http://usefulinc.com/ns/doap#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-SELECT ?home ?repo ?license ?maintainer ?maintainerhome ?lang
+SELECT ?home ?repo ?license ?maintainer ?maintainerhome ?lang ?repotype
 WHERE {
 ?p a doap:Project;
    doap:homepage ?home;
@@ -14,7 +14,8 @@ WHERE {
    doap:license ?license;
    doap:programming-language ?lang;
    doap:maintainer ?m.
-?r doap:location ?repo.
+?r a ?repotype;
+   doap:location ?repo.
 ?m foaf:name ?maintainer;
    foaf:homepage ?maintainerhome.
 }"
@@ -28,11 +29,14 @@ roqet -q -r csv -e "$q" -D /dev/stdin < $rdf | sed '/^Result/d' \
 	mainthome=`echo $r | awk -F , '{print $6}'| sed -e 's/uri(\(.*\))/\1/'`
 	lang=`echo $r | awk -F , '{print $7}'| sed -e 's/"\(.*\)"/\1/'`
 	test "$licenseuri" = "http://www.gnu.org/licenses/gpl.html" && license="GPL"
+	test "$licenseuri" = "http://www.gnu.org/licenses/agpl.html" && license="AGPL"
 	test "$licenseuri" = "http://creativecommons.org/licenses/MIT/" && license="MIT"
+	repotype=`echo $r | awk -F , '{print $8}'| sed -e 's/uri(\(.*\))/\1/'`
+	test "$repotype" = "http://usefulinc.com/ns/doap#GitRepository" && repocmd="git clone"
 
 	cat <<- _EOF_
 - Project homepage: [$home]($home)
-- Code repository: [$repo]($repo)
+- Code repository: $repocmd $repo
 - Maintainer: [$maint]($mainthome)
 - Language: $lang
 - License: [$license]($licenseuri)
