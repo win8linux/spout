@@ -23,5 +23,5 @@
 
 :v1.4 a doap:Version;
     doap:revision "1.4";
-    doap:created "2010-08-06";
-    doap:file-release <http://njw.me.uk/software/spout/spout-1.4.tar.gz>.
+    doap:created "2010-10-24";
+    doap:file-release <http://njw.me.uk/software/spout/spout-1.4.tar.bz2>.

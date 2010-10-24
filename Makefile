@@ -37,17 +37,17 @@ $(WEB): web/index.txt web/header.html web/footer.html web/doap.ttl
 	@cat web/footer.html >> $@
 
 clean:
-	rm -f -- $(TARGETS) $(WEB) $(OBJ) $(NAME)-$(VERSION).tar.gz $(NAME)-$(VERSION).tar.gz.sig
+	rm -f -- $(TARGETS) $(WEB) $(OBJ) $(NAME)-$(VERSION).tar.bz2 $(NAME)-$(VERSION).tar.bz2.sig
 
 dist: clean
 	@mkdir -p $(NAME)-$(VERSION)
 	@cp -R $(SRC) $(HEADERS) Makefile config.mk COPYING README $(NAME)-$(VERSION)
 	@for i in $(MAN); do \
 		sed "s/VERSION/$(VERSION)/g" < $$i > $(NAME)-$(VERSION)/$$i; done
-	@tar -c $(NAME)-$(VERSION) | gzip -c > web/releases/$(NAME)-$(VERSION).tar.gz
-	@gpg -b < web/releases/$(NAME)-$(VERSION).tar.gz > web/releases/$(NAME)-$(VERSION).tar.gz.sig
+	@tar -c $(NAME)-$(VERSION) | bzip2 -c > web/releases/$(NAME)-$(VERSION).tar.bz2
+	@gpg -b < web/releases/$(NAME)-$(VERSION).tar.bz2 > web/releases/$(NAME)-$(VERSION).tar.bz2.sig
 	@rm -rf $(NAME)-$(VERSION)
-	@echo $(NAME)-$(VERSION).tar.gz $(NAME)-$(VERSION).tar.gz.sig
+	@echo $(NAME)-$(VERSION).tar.bz2 $(NAME)-$(VERSION).tar.bz2.sig
 
 install: all
 	@echo installing executables to $(DESTDIR)$(PREFIX)/bin
