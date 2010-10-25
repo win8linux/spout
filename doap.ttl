@@ -7,7 +7,7 @@
     doap:name "Spout";
     doap:shortdesc "A simple caveflying game";
     doap:description "Spout is a simple caveflying game. The aim is to get as high as possible avoiding or destroying obstacles.";
-    doap:homepage <http://njw.me.uk/software/spout>;
+    doap:homepage <http://njw.me.uk/software/spout/>;
     doap:repository :repo;
     doap:programming-language "C";
     doap:license <http://creativecommons.org/licenses/MIT/>;

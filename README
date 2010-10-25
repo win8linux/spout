@@ -7,10 +7,10 @@ possible, avoiding or destroying obstacles.
 Controls
 --------
 
-Left:      Rotate left
-Right:     Rotate right
-Space:     Accelerate
-Esc:       Pause
+Left:      Rotate left  
+Right:     Rotate right  
+Space:     Thrust  
+Esc:       Pause  
 Shift-Esc: Quit
 
 History
