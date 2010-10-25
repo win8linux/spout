@@ -45,7 +45,7 @@ clean:
 
 dist: clean
 	@mkdir -p $(NAME)-$(VERSION)
-	@cp -R $(SRC) $(HEADERS) Makefile config.mk COPYING README $(NAME)-$(VERSION)
+	@cp -R $(SRC) $(HEADERS) Makefile config.mk COPYING README INSTALL $(NAME)-$(VERSION)
 	@for i in $(MAN); do \
 		sed "s/VERSION/$(VERSION)/g" < $$i > $(NAME)-$(VERSION)/$$i; done
 	@tar -c $(NAME)-$(VERSION) | bzip2 -c > $(NAME)-$(VERSION).tar.bz2
