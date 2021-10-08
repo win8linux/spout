@@ -981,7 +981,7 @@ int pceFontPrintf(const char *fmt, ...)
 	while(*pC) {
 		int i, x, y;
 		const unsigned char *sAdr;
-		if(*pC >= 0x20 && *pC < 0x80) {
+		if(*pC >= 0x20) {
 			i = *pC - 0x20;
 		} else {
 			i = 0;
