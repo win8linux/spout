@@ -11,7 +11,7 @@ SDLINC = $(shell pkg-config --cflags sdl)
 SDLLIB = $(shell pkg-config --libs sdl)
 
 INCS = -I. -I/usr/include ${SDLINC}
-LIBS = -L/usr/lib -lc ${SDLLIB}
+LIBS = -lc ${SDLLIB}
 
 # flags
 CFLAGS = -std=gnu99 -Wall -Werror ${INCS} -DVERSION=\"${VERSION}\"
