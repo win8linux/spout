@@ -302,17 +302,17 @@ void pceAppProc(int cnt)
 				}
 
 				if(upperLine == 111 && height > 0) {
-					unsigned long *pL;
-					pL = (unsigned long *)(vbuff2 + 128 * 108 + 4);
-					while(pL < (unsigned long *)(vbuff2 + 128 * 109 - 4)) {
+					uint32_t *pL;
+					pL = (uint32_t *)(vbuff2 + 128 * 108 + 4);
+					while(pL < (uint32_t *)(vbuff2 + 128 * 109 - 4)) {
 						*pL++ = 0;
 					}
 					pL += 2;
-					while(pL < (unsigned long *)(vbuff2 + 128 * 110 - 4)) {
+					while(pL < (uint32_t *)(vbuff2 + 128 * 110 - 4)) {
 						*pL++ = 0xd3d3d3d3;
 					}
 					pL += 2;
-					while(pL < (unsigned long *)(vbuff2 + 128 * 111 - 4)) {
+					while(pL < (uint32_t *)(vbuff2 + 128 * 111 - 4)) {
 						*pL++ = 0;
 					}
 				}
@@ -361,13 +361,13 @@ void pceAppProc(int cnt)
 			int i, j;
 
 			if((upperLine & 31) == 0) {
-				unsigned long *pL;
+				uint32_t *pL;
 				vBuffer = vbuff2 + ((upperLine - 24) & 127) * 128;
 				pceFontSetBkColor(0);
 
 				switch(upperLine / 32) {
 					case 0:
-						pL = (unsigned long *)(vbuff2 + 12 + ((upperLine - 24) & 127) * 128);
+						pL = (uint32_t *)(vbuff2 + 12 + ((upperLine - 24) & 127) * 128);
 						for(i = 0; i < 16; i ++) {
 							for(j = 0; j < 26 / 2; j ++) {
 								*pL = 0x91919191;
@@ -622,13 +622,13 @@ void pceAppProc(int cnt)
 	dispPos = upperLine;
 
 	{
-		unsigned long *pL, *pL2, *pLe;
-		pL = (unsigned long *)(vbuff + 2 * 128);
-		pL2 = (unsigned long *)(vbuff2 + dispPos * 128);
+		uint32_t *pL, *pL2, *pLe;
+		pL = (uint32_t *)(vbuff + 2 * 128);
+		pL2 = (uint32_t *)(vbuff2 + dispPos * 128);
 
 		pLe = pL2 + 128 * 78 / 4;
-		if(pLe > (unsigned long *)(vbuff2 + 128 * 128)) {
-			pLe = (unsigned long *)(vbuff2 + 128 * 128);
+		if(pLe > (uint32_t *)(vbuff2 + 128 * 128)) {
+			pLe = (uint32_t *)(vbuff2 + 128 * 128);
 		}
 
 		while(pL2 < pLe) {
@@ -637,8 +637,8 @@ void pceAppProc(int cnt)
 			pL2 ++;
 		}
 
-		pL2 = (unsigned long *)(vbuff2);
-		while(pL < (unsigned long *)(vbuff + 128 * (78 + 2))) {
+		pL2 = (uint32_t *)(vbuff2);
+		while(pL < (uint32_t *)(vbuff + 128 * (78 + 2))) {
 			*pL = *pL2 & 0x03030303;
 			pL ++;
 			pL2 ++;
