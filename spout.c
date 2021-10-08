@@ -387,6 +387,8 @@ void pceAppProc(int cnt)
 						pceFontPrintf("    height: %8d", hiScore[1] % 1000000);
 						pceFontSetPos(118 - 20 * 4, 6);
 						pceFontPrintf("high-score: %8d", hiScore[0] % 1000000);
+						pceFontSetPos(28, 24);
+						pceFontPrintf("%s", "shift+esc to exit");
 						break;
 
 					case 1:
