@@ -107,8 +107,12 @@ void pceAppInit(void)
 	{
 		int fa;
 		if((fa = open(score_path, O_RDONLY)) != -1) {
-			read (fa, (void *) hiScore, 8);
-			close(fa);
+			if(read (fa, (void *) hiScore, 8) != -1) {
+                close(fa);
+            } else {
+                perror("read");
+                exit(EXIT_FAILURE);
+            }
 		}
 	}
 
@@ -145,8 +149,12 @@ void pceAppProc(int cnt)
 				hiScore[0] = score;
 				hiScore[1] = height;
 				if((fa = open(score_path, O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR)) != -1) {
-					write(fa, (void *) hiScore, 8);
-					close(fa);
+					if(write(fa, (void *) hiScore, 8) != -1) {
+                        close(fa);
+                    } else {
+                        perror("write");
+                        exit(EXIT_FAILURE);
+                    }
 				}
 			}
 		} else {
